@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Password generator app</title>
+</head>
+<body>
+  <main>
+    <h1>Password Generator</h1>
+    <div id="display-password">
+      <p id="password">P4$5W0rD!</p>
+      <i class="fa fa-copy" style="font-size:24px"></i>
+    </div>
+    <div id="create-password">
+      <div id="character-length">
+        <p>Character Length</p>
+        <p id="number-character">10</p>
+      </div>
+      <div class="slider-container">
+        <input type="range" id="slider" name="slider" min="1" max="19" value="10">
+      </div>
+      <div id="checkbox-password">
+        <div class="checkboxes">
+          <input type="checkbox" id="Uppercase" name="Uppercase" value="Include Uppercase Letters">
+          <label for="Uppercase">Include Uppercase Letters</label><br>
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="Lowercase" name="Lowercase" value="Include Lowercase Letters">
+          <label for="Lowercase">Include Lowercase Letters</label><br>
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="Numbers" name="Numbers" value="Include Numbers">
+          <label for="Numbers">Include Numbers</label><br>
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="Symbols" name="Symbols" value="Include Symbols">
+          <label for="Symbols">Include Symbols</label><br>
+        </div>
+      </div>
+      <div id="password-strength">
+        <div id="text">
+          <span>STRENGTH</span>
+        </div>
+        <div id="strength-indicator">
+          <span id="indicator">MEDIUM</span>
+          <div id="rectangles">
+            <div id="rectangle-1"></div>
+            <div id="rectangle-2"></div>
+            <div id="rectangle-3"></div>
+            <div id="rectangle-4"></div>
+          </div>
+        </div>
+      </div>
+      <div id="generate">
+        <button>GENERATE</button>
+
+      </div>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
