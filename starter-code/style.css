@@ -190,10 +190,32 @@ body {
         margin-bottom: 16px;
         border: none;
     }
-    #error {
+    #error-no-option {
         color: var(--color-too-weak);
         padding: 20px;
-        text-align: center;
         display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    #error-two-options {
+        color: var(--color-too-weak);
+        padding: 20px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    #error-three-options {
+        color: var(--color-too-weak);
+        padding: 20px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    #error-four-options {
+        color: var(--color-too-weak);
+        padding: 20px;
+        display: none;
+        justify-content: center;
+        align-items: center;
     }
 }

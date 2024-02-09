@@ -94,7 +94,10 @@ const numCheck = numCheckbox.checked;
 const symbCheckbox = document.querySelector('#Symbols');
 const symbCheck = lcCheckbox.checked;
 
-const errorMessage = document.querySelector('#error'); 
+const errorMessage = document.querySelector('#error-no-option');
+const errorTwoOptions = document.querySelector('#error-two-options');
+const errorThreeOptions = document.querySelector('#error-three-options');
+const errorFourOptions = document.querySelector('#error-four-options');      
 
 /* ACTIVATE ON CLICK */
 
@@ -145,45 +148,65 @@ generateButton.addEventListener('click', (event) => {
 
     if ( numberOfTrue === 0) {
       tooWeakIndicator.style.backgroundColor = 'transparent';
+      tooWeakIndicator.style.border = '2px solid #E6E5EA';
       weakIndicator.style.backgroundColor = 'transparent';
+      weakIndicator.style.border = '2px solid #E6E5EA';
       mediumIndicator.style.backgroundColor = 'transparent';
-      strongIndicator.style.backgroundColor = 'transparent'
+      mediumIndicator.style.border = '2px solid #E6E5EA';
+      strongIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.border = '2px solid #E6E5EA';
       indicatorText.innerHTML = '';
-      errorMessage.style.display = 'inline-block';
+      errorMessage.style.display = 'flex';
       showPassword.innerHTML = '';
     }
     else if ( numberOfTrue === 1) {
       tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      tooWeakIndicator.style.border = '2px solid #F64A4A';
       weakIndicator.style.backgroundColor = 'transparent';
+      weakIndicator.style.border = '2px solid #E6E5EA';
       mediumIndicator.style.backgroundColor = 'transparent';
-      strongIndicator.style.backgroundColor = 'transparent'
+      mediumIndicator.style.border = '2px solid #E6E5EA';
+      strongIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.border = '2px solid #E6E5EA';
       indicatorText.innerHTML = 'TOO WEAK';
       errorMessage.style.display = 'none';
       showPassword.innerHTML = getPassword();
     }
     else if (numberOfTrue === 2) {
-      tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      tooWeakIndicator.style.backgroundColor = '#FB7C58';
+      tooWeakIndicator.style.border = '2px solid #FB7C58';
       weakIndicator.style.backgroundColor = '#FB7C58';
+      weakIndicator.style.border = '2px solid #FB7C58';
       mediumIndicator.style.backgroundColor = 'transparent';
-      strongIndicator.style.backgroundColor = 'transparent'
+      mediumIndicator.style.border = '2px solid #E6E5EA';
+      strongIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.border = '2px solid #E6E5EA';
       indicatorText.innerHTML = 'WEAK';
       errorMessage.style.display = 'none';
       showPassword.innerHTML = getPassword();
     }
     else if (numberOfTrue === 3) {
-      tooWeakIndicator.style.backgroundColor = '#F64A4A';
-      weakIndicator.style.backgroundColor = '#FB7C58';
+      tooWeakIndicator.style.backgroundColor = '#F8CD65';
+      tooWeakIndicator.style.border = '2px solid #F8CD65';
+      weakIndicator.style.backgroundColor = '#F8CD65';
+      weakIndicator.style.border = '2px solid #F8CD65';
       mediumIndicator.style.backgroundColor = '#F8CD65';
+      mediumIndicator.style.border = '2px solid #F8CD65';
       strongIndicator.style.backgroundColor = 'transparent'
+      strongIndicator.style.border = '2px solid #E6E5EA';
       indicatorText.innerHTML = 'MEDIUM';
       errorMessage.style.display = 'none';
       showPassword.innerHTML = getPassword();
     }
     else {
-      tooWeakIndicator.style.backgroundColor = '#F64A4A';
-      weakIndicator.style.backgroundColor = '#FB7C58';
-      mediumIndicator.style.backgroundColor = '#F8CD65';
-      strongIndicator.style.backgroundColor = '#A4FFAF'
+      tooWeakIndicator.style.backgroundColor = '#A4FFAF';
+      tooWeakIndicator.style.border = 'solid 2px #A4FFAF';
+      weakIndicator.style.backgroundColor = '#A4FFAF';
+      weakIndicator.style.border = 'solid 2px #A4FFAF';
+      mediumIndicator.style.backgroundColor = '#A4FFAF';
+      mediumIndicator.style.border = '2px solid #A4FFAF';
+      strongIndicator.style.backgroundColor = '#A4FFAF';
+      strongIndicator.style.border = 'solid 2px #A4FFAF';
       indicatorText.innerHTML = 'STRONG';
       errorMessage.style.display = 'none';
       showPassword.innerHTML = getPassword();
@@ -194,6 +217,161 @@ generateButton.addEventListener('click', (event) => {
 
   /* GENERATING PASSWORD DEPENDING OF THE CHECKBOXES CHECKED */
   const generatePassword = () => {
+    const numChar = slider.value;
+    let stringPassword = '';
     
-  }
-})
+    const getRandomUC = () => {
+      const randomNumUC = Math.floor(Math.random() * 25);
+      let randomUC = charPassword.uppercase[randomNumUC];
+      return randomUC;
+    };
+    const getRandomLC = () => {
+      const randomNumLC = Math.floor(Math.random() * 25);
+      let randomLC = charPassword.lowercase[randomNumLC];
+      return randomLC;
+    };
+
+    const getRandomNum = () => {
+      const randomNumNum = Math.floor(Math.random() * 9);
+      let randomNum = charPassword.numbers[randomNumNum];
+      return randomNum;
+    };
+
+    const getRandomSymb = () => {
+      const randomNumSymb = Math.floor(Math.random() * 27);
+      let randomSymb = charPassword.symbols[randomNumSymb];
+      return randomSymb;
+    };
+
+    const oneBox = () => {
+      if (ucCheck === true && lcCheck === false && numCheck === false && symbCheck === false) {
+        for (let i = 0; i < numChar; i++) {
+          let singleUC = getRandomUC();
+          stringPassword += singleUC;
+        }
+        showPassword.innerHTML = stringPassword;
+        return stringPassword;
+      }
+      else if (ucCheck === false && lcCheck === true && numCheck === false && symbCheck === false) {
+        for (let i = 0; i < numChar; i++) {
+          let singleLC = getRandomLC();
+          stringPassword += singleLC;
+        }
+        showPassword.innerHTML = stringPassword;
+        return stringPassword;
+      }
+      else if (ucCheck === false && lcCheck === false && numCheck === true && symbCheck === false) {
+        for (let i = 0; i < numChar; i++) {
+          let singleNum = getRandomNum();
+          stringPassword += singleNum;
+        }
+        showPassword.innerHTML = stringPassword;
+        return stringPassword;
+      }
+      else if (ucCheck === false && lcCheck === false && numCheck === false && symbCheck === true) {
+        for (let i = 0; i < numChar; i++) {
+          let singleSymb = getRandomSymb();
+          stringPassword += singleSymb;
+        }
+        showPassword.innerHTML = stringPassword;
+        return stringPassword;
+      }
+    };
+    console.log(oneBox());
+
+    const allBox = () => {
+      if (ucCheck === true && lcCheck === true && numCheck === true && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 4);
+        let secondOption = Math.floor(numChar / 4);
+        let thirdOption = Math.floor(numChar / 4);
+        let fourthOption = numChar - (firstOption + secondOption + thirdOption);
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          stringPassword += singleUC;
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleLC = getRandomLC();
+          stringPassword += singleLC;
+        }
+        for (let i = 0; i < thirdOption; i++) {
+          let singleNum = getRandomNum();
+          stringPassword += singleNum;
+        }
+        for (let i = 0; i < fourthOption; i++) {
+          let singleSymb = getRandomSymb();
+          stringPassword += singleSymb;
+        }
+        showPassword.innerHTML = stringPassword;
+        return stringPassword;
+      }
+    };
+    console.log(allBox());
+
+    // if (ucCheck === true && lcCheck === false && numCheck === false && symbCheck === false) {
+    //   for (let i = 0; i < numChar; i++) {
+    //     let singleUC = getRandomUC();
+    //     stringPassword += singleUC;
+    //   }
+    //   showPassword.innerHTML = stringPassword;
+    //   return stringPassword;
+    // }
+    // else if (ucCheck === true && lcCheck === true && numCheck === false && symbCheck === false) {
+    //   let firstOption = Math.floor(numChar / 2);
+    //   let secondOption = numChar - firstOption;
+    //   for (let i = 0; i < firstOption; i++) {
+    //     let singleUC = getRandomUC();
+    //     stringPassword += singleUC;
+    //   }
+    //   for (let i = 0; i < secondOption; i++) {
+    //     let singleLC = getRandomLC();
+    //     stringPassword += singleLC;
+    //   }
+    //   showPassword.innerHTML = stringPassword;
+    //   return stringPassword;
+    // }
+    // else if (ucCheck === true && lcCheck === true && numCheck === true && symbCheck === false) {
+    //   let firstOption = Math.floor(numChar / 3);
+    //   let secondOption = Math.floor(numChar / 3);
+    //   let thirdOption = numChar - (firstOption + secondOption);
+    //   for (let i = 0; i < firstOption; i++) {
+    //     let singleUC = getRandomUC();
+    //     stringPassword += singleUC;
+    //   }
+    //   for (let i = 0; i < secondOption; i++) {
+    //     let singleLC = getRandomLC();
+    //     stringPassword += singleLC;
+    //   }
+    //   for (let i = 0; i < thirdOption; i++) {
+    //     let singleNum = getRandomNum();
+    //     stringPassword += singleNum;
+    //   }
+    //   showPassword.innerHTML = stringPassword;
+    //   return stringPassword;
+    // }
+    // else {
+    //   let firstOption = Math.floor(numChar / 4);
+    //   let secondOption = Math.floor(numChar / 4);
+    //   let thirdOption = Math.floor(numChar / 4);
+    //   let fourthOption = numChar - (firstOption + secondOption + thirdOption);
+    //   for (let i = 0; i < firstOption; i++) {
+    //     let singleUC = getRandomUC();
+    //     stringPassword += singleUC;
+    //   }
+    //   for (let i = 0; i < secondOption; i++) {
+    //     let singleLC = getRandomLC();
+    //     stringPassword += singleLC;
+    //   }
+    //   for (let i = 0; i < thirdOption; i++) {
+    //     let singleNum = getRandomNum();
+    //     stringPassword += singleNum;
+    //   }
+    //   for (let i = 0; i < fourthOption; i++) {
+    //     let singleSymb = getRandomSymb();
+    //     stringPassword += singleSymb;
+    //   }
+    //   showPassword.innerHTML = stringPassword;
+    //   return stringPassword;
+    // };
+  };
+  console.log(generatePassword());
+});
