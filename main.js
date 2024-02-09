@@ -69,7 +69,8 @@ const getPassword = () => {
 
   const shuffledArray = shuffleArray(randomPassword);
   console.log(shuffledArray);
-  return shuffledArray;
+  const joinedArray = shuffledArray.join('');
+  return joinedArray;
 };
 console.log(getPassword());
 
@@ -79,11 +80,26 @@ const createPassword = getPassword => {
   };
 };
 
+/* CHECK BOXES */
 
+const ucCheckbox = document.querySelector('#Uppercase');
+const ucCheck = ucCheckbox.checked;
+
+const lcCheckbox = document.querySelector('#Lowercase');
+const lcCheck = lcCheckbox.checked;
+
+const numCheckbox = document.querySelector('#Numbers');
+const numCheck = numCheckbox.checked;
+
+const symbCheckbox = document.querySelector('#Symbols');
+const symbCheck = lcCheckbox.checked;
+
+const errorMessage = document.querySelector('#error'); 
 
 /* ACTIVATE ON CLICK */
 
 const generateButton = document.querySelector('#generate');
+const indicatorText = document.querySelector('#indicator');
 
 generateButton.addEventListener('click', (event) => {
   event.preventDefault;
@@ -92,4 +108,92 @@ generateButton.addEventListener('click', (event) => {
   const showPassword = document.querySelector('#password');
 
   showPassword.innerHTML = getPassword();
+
+  /* CHECKBOX FUNCTIONS */
+
+  /* UPPERCASE */
+  const ucCheckbox = document.querySelector('#Uppercase');
+  const ucCheck = ucCheckbox.checked;
+  /* LOWERCASE */
+  const lcCheckbox = document.querySelector('#Lowercase');
+  const lcCheck = lcCheckbox.checked;
+  /* NUMBERS */
+  const numCheckbox = document.querySelector('#Numbers');
+  const numCheck = numCheckbox.checked;
+  /* SYMBOLS */
+  const symbCheckbox = document.querySelector('#Symbols');
+  const symbCheck = symbCheckbox.checked;
+
+  /* ADD BOOLEANS STATES OF CHECKBOXES TO ARRAY */
+  const countCheckedBoxes = [ucCheck, lcCheck, numCheck, symbCheck];
+  console.log(countCheckedBoxes);
+
+  const numberOfTrue = countCheckedBoxes.filter(states => states === true).length;
+  console.log(numberOfTrue);
+
+  const numberOfFalse = countCheckedBoxes.filter(states => states === false).length;
+  console.log(numberOfFalse);
+
+  /* FUNCTIONS CHECKBOXES */
+
+  const indicChange = () => {
+    const tooWeakIndicator = document.querySelector('#rectangle-1');
+    const weakIndicator = document.querySelector('#rectangle-2');
+    const mediumIndicator = document.querySelector('#rectangle-3');
+    const strongIndicator = document.querySelector('#rectangle-4');
+    const indicatorText = document.querySelector('#indicator');
+
+    if ( numberOfTrue === 0) {
+      tooWeakIndicator.style.backgroundColor = 'transparent';
+      weakIndicator.style.backgroundColor = 'transparent';
+      mediumIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.backgroundColor = 'transparent'
+      indicatorText.innerHTML = '';
+      errorMessage.style.display = 'inline-block';
+      showPassword.innerHTML = '';
+    }
+    else if ( numberOfTrue === 1) {
+      tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      weakIndicator.style.backgroundColor = 'transparent';
+      mediumIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.backgroundColor = 'transparent'
+      indicatorText.innerHTML = 'TOO WEAK';
+      errorMessage.style.display = 'none';
+      showPassword.innerHTML = getPassword();
+    }
+    else if (numberOfTrue === 2) {
+      tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      weakIndicator.style.backgroundColor = '#FB7C58';
+      mediumIndicator.style.backgroundColor = 'transparent';
+      strongIndicator.style.backgroundColor = 'transparent'
+      indicatorText.innerHTML = 'WEAK';
+      errorMessage.style.display = 'none';
+      showPassword.innerHTML = getPassword();
+    }
+    else if (numberOfTrue === 3) {
+      tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      weakIndicator.style.backgroundColor = '#FB7C58';
+      mediumIndicator.style.backgroundColor = '#F8CD65';
+      strongIndicator.style.backgroundColor = 'transparent'
+      indicatorText.innerHTML = 'MEDIUM';
+      errorMessage.style.display = 'none';
+      showPassword.innerHTML = getPassword();
+    }
+    else {
+      tooWeakIndicator.style.backgroundColor = '#F64A4A';
+      weakIndicator.style.backgroundColor = '#FB7C58';
+      mediumIndicator.style.backgroundColor = '#F8CD65';
+      strongIndicator.style.backgroundColor = '#A4FFAF'
+      indicatorText.innerHTML = 'STRONG';
+      errorMessage.style.display = 'none';
+      showPassword.innerHTML = getPassword();
+    }
+    return [tooWeakIndicator, weakIndicator, mediumIndicator, strongIndicator, indicatorText];
+  }
+  console.log(indicChange());
+
+  /* GENERATING PASSWORD DEPENDING OF THE CHECKBOXES CHECKED */
+  const generatePassword = () => {
+    
+  }
 })

@@ -190,4 +190,10 @@ body {
         margin-bottom: 16px;
         border: none;
     }
+    #error {
+        color: var(--color-too-weak);
+        padding: 20px;
+        text-align: center;
+        display: none;
+    }
 }
