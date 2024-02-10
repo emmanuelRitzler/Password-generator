@@ -74,12 +74,6 @@ const getPassword = () => {
 };
 console.log(getPassword());
 
-const createPassword = getPassword => {
-  for (i = 1; i <= slider.value; i++) {
-
-  };
-};
-
 /* CHECK BOXES */
 
 const ucCheckbox = document.querySelector('#Uppercase');
@@ -94,10 +88,7 @@ const numCheck = numCheckbox.checked;
 const symbCheckbox = document.querySelector('#Symbols');
 const symbCheck = lcCheckbox.checked;
 
-const errorMessage = document.querySelector('#error-no-option');
-const errorTwoOptions = document.querySelector('#error-two-options');
-const errorThreeOptions = document.querySelector('#error-three-options');
-const errorFourOptions = document.querySelector('#error-four-options');      
+const errorMessage = document.querySelector('#error-no-option');  
 
 /* ACTIVATE ON CLICK */
 
@@ -218,7 +209,7 @@ generateButton.addEventListener('click', (event) => {
   /* GENERATING PASSWORD DEPENDING OF THE CHECKBOXES CHECKED */
   const generatePassword = () => {
     const numChar = slider.value;
-    let stringPassword = '';
+    let passwordArray = [];
     
     const getRandomUC = () => {
       const randomNumUC = Math.floor(Math.random() * 25);
@@ -247,37 +238,377 @@ generateButton.addEventListener('click', (event) => {
       if (ucCheck === true && lcCheck === false && numCheck === false && symbCheck === false) {
         for (let i = 0; i < numChar; i++) {
           let singleUC = getRandomUC();
-          stringPassword += singleUC;
+          passwordArray.push(singleUC);
         }
-        showPassword.innerHTML = stringPassword;
-        return stringPassword;
+        console.log(passwordArray);
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
       }
       else if (ucCheck === false && lcCheck === true && numCheck === false && symbCheck === false) {
         for (let i = 0; i < numChar; i++) {
           let singleLC = getRandomLC();
-          stringPassword += singleLC;
+          passwordArray.push(singleLC);
         }
-        showPassword.innerHTML = stringPassword;
-        return stringPassword;
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
       }
       else if (ucCheck === false && lcCheck === false && numCheck === true && symbCheck === false) {
         for (let i = 0; i < numChar; i++) {
           let singleNum = getRandomNum();
-          stringPassword += singleNum;
+          passwordArray.push(singleNum);
         }
-        showPassword.innerHTML = stringPassword;
-        return stringPassword;
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
       }
       else if (ucCheck === false && lcCheck === false && numCheck === false && symbCheck === true) {
         for (let i = 0; i < numChar; i++) {
           let singleSymb = getRandomSymb();
-          stringPassword += singleSymb;
+          passwordArray.push(singleSymb);
         }
-        showPassword.innerHTML = stringPassword;
-        return stringPassword;
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
       }
     };
     console.log(oneBox());
+
+    const twoBox = () => {
+      if (ucCheck === true && lcCheck === true && numCheck === false && symbCheck === false) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === true && lcCheck === false && numCheck === true && symbCheck === false) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === true && lcCheck === false && numCheck === false && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === false && lcCheck === true && numCheck === true && symbCheck === false) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === false && lcCheck === true && numCheck === false && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === false && lcCheck === false && numCheck === true && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 2);
+        let secondOption = numChar - firstOption;
+        for (let i = 0; i < firstOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+    };
+    console.log(twoBox());
+
+    const threeBox = () => {
+      if (ucCheck === true && lcCheck === true && numCheck === true && symbCheck === false) {
+        let firstOption = Math.floor(numChar / 3);
+        let secondOption = Math.floor(numChar / 3);
+        let thirdOption = numChar - (firstOption + secondOption);
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+        for (let i = 0; i < thirdOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === true && lcCheck === true && numCheck === false && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 3);
+        let secondOption = Math.floor(numChar / 3);
+        let thirdOption = numChar - (firstOption + secondOption);
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        console.log(passwordArray)
+        for (let i = 0; i < secondOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+        console.log(passwordArray)
+        for (let i = 0; i < thirdOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+        console.log(passwordArray)
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === true && lcCheck === false && numCheck === true && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 3);
+        let secondOption = Math.floor(numChar / 3);
+        let thirdOption = numChar - (firstOption + secondOption);
+        for (let i = 0; i < firstOption; i++) {
+          let singleUC = getRandomUC();
+          passwordArray.push(singleUC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+        for (let i = 0; i < thirdOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+      else if (ucCheck === false && lcCheck === true && numCheck === true && symbCheck === true) {
+        let firstOption = Math.floor(numChar / 3);
+        let secondOption = Math.floor(numChar / 3);
+        let thirdOption = numChar - (firstOption + secondOption);
+        for (let i = 0; i < firstOption; i++) {
+          let singleLC = getRandomLC();
+          passwordArray.push(singleLC);
+        }
+        for (let i = 0; i < secondOption; i++) {
+          let singleNum = getRandomNum();
+          passwordArray.push(singleNum);
+        }
+        for (let i = 0; i < thirdOption; i++) {
+          let singleSymb = getRandomSymb();
+          passwordArray.push(singleSymb);
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
+      }
+    };
+    console.log(threeBox());
 
     const allBox = () => {
       if (ucCheck === true && lcCheck === true && numCheck === true && symbCheck === true) {
@@ -287,91 +618,50 @@ generateButton.addEventListener('click', (event) => {
         let fourthOption = numChar - (firstOption + secondOption + thirdOption);
         for (let i = 0; i < firstOption; i++) {
           let singleUC = getRandomUC();
-          stringPassword += singleUC;
+          passwordArray.push(singleUC);
         }
         for (let i = 0; i < secondOption; i++) {
           let singleLC = getRandomLC();
-          stringPassword += singleLC;
+          passwordArray.push(singleLC);
         }
         for (let i = 0; i < thirdOption; i++) {
           let singleNum = getRandomNum();
-          stringPassword += singleNum;
+          passwordArray.push(singleNum);
         }
         for (let i = 0; i < fourthOption; i++) {
           let singleSymb = getRandomSymb();
-          stringPassword += singleSymb;
+          passwordArray.push(singleSymb);
         }
-        showPassword.innerHTML = stringPassword;
-        return stringPassword;
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
+      
+        const shuffledArray = shuffleArray(passwordArray);
+        console.log(shuffledArray);
+        const joinedArray = shuffledArray.join('');
+        showPassword.innerHTML = joinedArray;
+        return joinedArray;
       }
     };
     console.log(allBox());
-
-    // if (ucCheck === true && lcCheck === false && numCheck === false && symbCheck === false) {
-    //   for (let i = 0; i < numChar; i++) {
-    //     let singleUC = getRandomUC();
-    //     stringPassword += singleUC;
-    //   }
-    //   showPassword.innerHTML = stringPassword;
-    //   return stringPassword;
-    // }
-    // else if (ucCheck === true && lcCheck === true && numCheck === false && symbCheck === false) {
-    //   let firstOption = Math.floor(numChar / 2);
-    //   let secondOption = numChar - firstOption;
-    //   for (let i = 0; i < firstOption; i++) {
-    //     let singleUC = getRandomUC();
-    //     stringPassword += singleUC;
-    //   }
-    //   for (let i = 0; i < secondOption; i++) {
-    //     let singleLC = getRandomLC();
-    //     stringPassword += singleLC;
-    //   }
-    //   showPassword.innerHTML = stringPassword;
-    //   return stringPassword;
-    // }
-    // else if (ucCheck === true && lcCheck === true && numCheck === true && symbCheck === false) {
-    //   let firstOption = Math.floor(numChar / 3);
-    //   let secondOption = Math.floor(numChar / 3);
-    //   let thirdOption = numChar - (firstOption + secondOption);
-    //   for (let i = 0; i < firstOption; i++) {
-    //     let singleUC = getRandomUC();
-    //     stringPassword += singleUC;
-    //   }
-    //   for (let i = 0; i < secondOption; i++) {
-    //     let singleLC = getRandomLC();
-    //     stringPassword += singleLC;
-    //   }
-    //   for (let i = 0; i < thirdOption; i++) {
-    //     let singleNum = getRandomNum();
-    //     stringPassword += singleNum;
-    //   }
-    //   showPassword.innerHTML = stringPassword;
-    //   return stringPassword;
-    // }
-    // else {
-    //   let firstOption = Math.floor(numChar / 4);
-    //   let secondOption = Math.floor(numChar / 4);
-    //   let thirdOption = Math.floor(numChar / 4);
-    //   let fourthOption = numChar - (firstOption + secondOption + thirdOption);
-    //   for (let i = 0; i < firstOption; i++) {
-    //     let singleUC = getRandomUC();
-    //     stringPassword += singleUC;
-    //   }
-    //   for (let i = 0; i < secondOption; i++) {
-    //     let singleLC = getRandomLC();
-    //     stringPassword += singleLC;
-    //   }
-    //   for (let i = 0; i < thirdOption; i++) {
-    //     let singleNum = getRandomNum();
-    //     stringPassword += singleNum;
-    //   }
-    //   for (let i = 0; i < fourthOption; i++) {
-    //     let singleSymb = getRandomSymb();
-    //     stringPassword += singleSymb;
-    //   }
-    //   showPassword.innerHTML = stringPassword;
-    //   return stringPassword;
-    // };
   };
   console.log(generatePassword());
+});
+
+const copyClipboard = document.querySelector('#copyIcon');
+
+copyClipboard.addEventListener('click', () => {
+  let copyText =  document.querySelector('#password');
+  let range = document.createRange();
+  range.selectNode(copyText);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  alert('Password copied to clipboard');
+  window.getSelection().removeAllRanges()
 });

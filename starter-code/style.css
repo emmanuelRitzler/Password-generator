@@ -54,7 +54,8 @@ body {
         margin-bottom: 16px;
     }
     #password {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        width: 70%;
     }
     /* PASSWORD GENERATOR */
     #create-password {
@@ -217,5 +218,11 @@ body {
         display: none;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #indicator {
+        display: none;
     }
 }
