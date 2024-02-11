@@ -14,15 +14,19 @@
     <h1>Password Generator</h1>
     <div id="display-password">
       <p id="password">P4$5W0rD!</p>
-      <i id="copyIcon" class="fa fa-copy" style="font-size:24px;cursor: pointer;"></i>
+      <div class="copy-message">
+        <p id="copy-text">COPIED</p>
+        <i id="copyIcon" class="fa fa-copy" style="font-size:24px;cursor: pointer;"></i>
+      </div>
     </div>
+    <p id="copyText-mobile">PASSWORD COPIED</p>
     <div id="create-password">
       <div id="character-length">
         <p>Character Length</p>
-        <p id="number-character">12</p>
+        <p id="number-character">8</p>
       </div>
       <div class="slider-container">
-        <input type="range" id="slider" name="slider" min="8" max="16" value="12">
+        <input type="range" id="slider" name="slider" min="8" max="16" value="8">
       </div>
       <div id="checkbox-password">
         <div class="checkboxes">

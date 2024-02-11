@@ -6,9 +6,10 @@ slider.addEventListener('input', () => {
 });
 
 document.getElementById("slider").oninput = function() {
-    var value = (this.value-this.min)/(this.max-this.min)*100
-    this.style.background = 'linear-gradient(to right, #A4FFAF 0%, #A4FFAF ' + value + '%, #18171F ' + value + '%, #18171F 100%)'
+    var value = (this.value - this.min) / (this.max - this.min) * 100;
+    this.style.background = 'linear-gradient(to right, #A4FFAF 0%, #A4FFAF ' + value + '%, #18171F ' + value + '%, #18171F 100%)';
 };
+
 
 /* DEFINE NUMBER OF CHARACTERS */
 
@@ -97,11 +98,14 @@ const indicatorText = document.querySelector('#indicator');
 
 generateButton.addEventListener('click', (event) => {
   event.preventDefault;
+  copyMessage.style.display = 'none';
+  copyMessageMobile.style.display = 'none';
 
   /* DISPLAY PW ON SCREEN */
   const showPassword = document.querySelector('#password');
 
   showPassword.innerHTML = getPassword();
+  showPassword.style.color = '#E6E5EA';
 
   /* CHECKBOX FUNCTIONS */
 
@@ -148,7 +152,8 @@ generateButton.addEventListener('click', (event) => {
       strongIndicator.style.border = '2px solid #E6E5EA';
       indicatorText.innerHTML = '';
       errorMessage.style.display = 'flex';
-      showPassword.innerHTML = '';
+      showPassword.style.color = '#817D92'
+      showPassword.innerHTML = 'P4$5W0rD!';
     }
     else if ( numberOfTrue === 1) {
       tooWeakIndicator.style.backgroundColor = '#F64A4A';
@@ -654,14 +659,48 @@ generateButton.addEventListener('click', (event) => {
 });
 
 const copyClipboard = document.querySelector('#copyIcon');
+const copyMessage = document.querySelector('#copy-text');
+const copyMessageMobile = document.querySelector('#copyText-mobile');
 
 copyClipboard.addEventListener('click', () => {
-  let copyText =  document.querySelector('#password');
-  let range = document.createRange();
-  range.selectNode(copyText);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-  document.execCommand('copy');
-  alert('Password copied to clipboard');
-  window.getSelection().removeAllRanges()
+  const ucCheckbox = document.querySelector('#Uppercase');
+  const ucCheck = ucCheckbox.checked;
+  const lcCheckbox = document.querySelector('#Lowercase');
+  const lcCheck = lcCheckbox.checked;
+  const numCheckbox = document.querySelector('#Numbers');
+  const numCheck = numCheckbox.checked;
+  const symbCheckbox = document.querySelector('#Symbols');
+  const symbCheck = symbCheckbox.checked;
+  const selectPassword = document.querySelector('#password');
+  const standardPassword = selectPassword.innerHTML;
+
+  const countCheckedBoxes = [ucCheck, lcCheck, numCheck, symbCheck];
+ 
+  const numberOfTrue = countCheckedBoxes.filter(states => states === true).length;
+  const numberOfFalse = countCheckedBoxes.filter(states => states === false).length;
+
+  if (numberOfTrue === 0 || standardPassword === 'P4$5W0rD!') {
+    copyMessage.style.display = 'none';
+    copyMessageMobile.style.display = 'none';
+    copyClipboard.style.color = '#A4FFAF';
+    console.log(standardPassword);
+  }
+  else {
+    let copyText =  document.querySelector('#password');
+    let range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    if (window.innerWidth <= 465) {
+      copyMessage.style.display = 'none';
+      copyMessageMobile.style.display = 'block';
+    } 
+    else {
+      copyMessage.style.display = 'inline';
+      copyMessageMobile.style.display = 'none';
+    }
+    copyClipboard.style.color = '#A4FFAF';
+    window.getSelection().removeAllRanges()
+  }
 });
