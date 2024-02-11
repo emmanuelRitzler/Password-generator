@@ -478,7 +478,7 @@
 @media only screen and (min-width: 851px) {
     body {
         background-color: var(--color-bg);
-        padding: 10% 20%;
+        padding: 10% 33%;
     }
     h1 {
         color: var(--color-title);
