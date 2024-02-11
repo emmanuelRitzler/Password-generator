@@ -478,7 +478,7 @@
 @media only screen and (min-width: 851px) {
     body {
         background-color: var(--color-bg);
-        padding: 10% 33%;
+        padding: 10% 10%;
     }
     h1 {
         color: var(--color-title);
@@ -520,8 +520,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 0 auto;
         background-color: var(--color-bg-window);
-        width: 100%;
+        width: 540px;
         height: auto;
         margin-bottom: 16px;
     }
@@ -533,8 +534,9 @@
     /* PASSWORD GENERATOR */
     #create-password {
         background-color: var(--color-bg-window);
-        width: 100%;
+        width: 540px;
         height: auto;
+        margin: 0 auto;
     }
     #character-length {
         display: flex;
