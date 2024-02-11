@@ -277,6 +277,13 @@
         color: var(--color-strong);
         display: none;
     }
+    #copyText-mobile {
+        color: var(--color-strong);
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 16px;
+        display: none;
+    }
     i {
         color: var(--color-strong);
         margin-right: 20px;
@@ -489,6 +496,13 @@
     }
     #copy-text {
         color: var(--color-strong);
+        display: none;
+    }
+    #copyText-mobile {
+        color: var(--color-strong);
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 16px;
         display: none;
     }
     i {
